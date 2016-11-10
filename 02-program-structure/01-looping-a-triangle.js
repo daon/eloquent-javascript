@@ -9,10 +9,11 @@
     ######
     #######
 */
-function printTriangle(str) {
-    for (var i=1;i<=str.length;i++) {
-        console.log(str.substr(0, i));
+
+function triangle(triangleBase, action) {
+    for (var i=1;i<=triangleBase.length;i++) {
+        action(triangleBase.substr(0, i));
     }
 }
 
-printTriangle("#######");
+triangle('#######', console.log);
