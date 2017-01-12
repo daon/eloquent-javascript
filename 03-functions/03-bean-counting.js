@@ -21,3 +21,22 @@ console.log(countBs("BBC"));
 console.log(countChar("kakkerlak", "k"));
 // → 4
 */
+
+function countChar(str, char) {
+    numberOfChars = 0;
+    
+    for(var i = 0; i < str.length; i++) {
+        if (str.charAt(i) === char) {
+            ++numberOfChars;
+        }
+    }
+    
+    return numberOfChars;
+}
+
+function countBs(str) {
+    return countChar(str, 'B');
+}
+
+console.log('Number of Bs: ', countBs("BBC"));
+console.log('Number of Chars: ', countChar("kakkerlak", "k"));
