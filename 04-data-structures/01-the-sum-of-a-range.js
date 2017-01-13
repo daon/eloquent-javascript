@@ -13,8 +13,35 @@ As a bonus assignment, modify your range function to take an optional third argu
 up the array. If no step is given, the array elements go up by increments of one, corresponding to the old behavior. The function 
 call range(1, 10, 2) should return [1, 3, 5, 7, 9]. Make sure it also works with negative step values so that range(5, 2, -1) 
 produces [5, 4, 3, 2].
-
+*/
 // Your code here.
+
+
+
+function range(start, end, step) {
+    step = step || 1;
+    var arr = [];
+    
+    var endOfLoop = function(i) {
+        return start > end ? i >= end : i <= end;
+    };
+    
+    for (var i = start; endOfLoop(i); i += step) {
+        arr.push(i);
+    }
+    
+    return arr;
+}
+
+function sum(numbers) {
+    var sum = 0;
+    
+    for (var i = 0; i < numbers.length; ++i) {
+        sum += numbers[i];
+    }
+    
+    return sum;
+}
 
 console.log(range(1, 10));
 // → [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -23,4 +50,4 @@ console.log(range(5, 2, -1));
 console.log(sum(range(1, 10)));
 // → 55
 
-*/
+
