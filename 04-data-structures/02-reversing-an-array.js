@@ -9,8 +9,28 @@ array given as argument in order to reverse its elements. Neither may use the st
 
 Thinking back to the notes about side effects and pure functions in the previous chapter, which variant do you expect to be useful 
 in more situations? Which one is more efficient?
+*/
+
 
 // Your code here.
+function reverseArray(arr) {
+    var reversedArray = [];
+    
+    for(var i=arr.length-1;i>=0;i--) {
+        reversedArray.push(arr[i]);
+    }
+    
+    return reversedArray;
+}
+
+function reverseArrayInPlace(arr) {
+    for (var i=0;i<Math.floor(arr.length/2);i++) {
+        var head = arr[i];
+        var tailIndex = (arr.length - 1) - i; 
+        arr[i] = arr[tailIndex];
+        arr[tailIndex] = head;
+    }
+}
 
 console.log(reverseArray(["A", "B", "C"]));
 // → ["C", "B", "A"];
@@ -19,4 +39,3 @@ reverseArrayInPlace(arrayValue);
 console.log(arrayValue);
 // → [5, 4, 3, 2, 1]
 
-*/
