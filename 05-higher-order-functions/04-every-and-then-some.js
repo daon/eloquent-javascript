@@ -1,4 +1,6 @@
 /*
+    Exercise from: http://eloquentjavascript.net/
+
     Arrays also come with the standard methods every and some. 
     Both take a predicate function that, when called with an array element
     as argument, returns true or false. Just like && returns a true value only 

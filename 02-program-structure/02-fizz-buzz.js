@@ -1,3 +1,5 @@
+//  Exercise from: http://eloquentjavascript.net/
+
 function fizzBuzz(n) {
     var str = '';
     if (n % 3 === 0) {
