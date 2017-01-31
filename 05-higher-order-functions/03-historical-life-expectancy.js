@@ -18,7 +18,33 @@ function average(array) {
   return array.reduce(plus) / array.length;
 }
 
+function groupBy(arr, computeGroup) {
+    return arr.reduce((groups, element) => {
+      var group = computeGroup(element);
+      
+      if (!groups.hasOwnProperty(group)) {
+        groups[group] = [];
+      }
+      
+      groups[group].push(element);
+      
+      return groups;
+    }, {});
+} 
+
 // Your code here.
+var ANCESTRY_FILE = require('./ancestry');
+
+var ancestry = JSON.parse(ANCESTRY_FILE);
+
+var groups = groupBy(ancestry, (person) => { return Math.ceil(person.died/100) })
+
+Object.keys(groups)
+  .forEach(group => {
+    groups[group] = average(groups[group].map(person => person.died - person.born)).toFixed(1);
+  });
+
+console.log(groups);
 
 // → 16: 43.5
 //   17: 51.2
