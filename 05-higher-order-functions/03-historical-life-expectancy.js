@@ -37,14 +37,16 @@ var ANCESTRY_FILE = require('./ancestry');
 
 var ancestry = JSON.parse(ANCESTRY_FILE);
 
-var groups = groupBy(ancestry, (person) => { return Math.ceil(person.died/100) })
+var getCentury = (person) => Math.ceil(person.died/100);
+var getAge = (person) => person.died - person.born;
 
-Object.keys(groups)
-  .forEach(group => {
-    groups[group] = average(groups[group].map(person => person.died - person.born)).toFixed(1);
-  });
+var centuries = groupBy(ancestry, getCentury);
 
-console.log(groups);
+for (var century in centuries) {
+  var averageAge = parseFloat(average(centuries[century].map(getAge)).toFixed(1));
+  
+  console.log(`${century}: ${averageAge}`);
+}
 
 // → 16: 43.5
 //   17: 51.2
