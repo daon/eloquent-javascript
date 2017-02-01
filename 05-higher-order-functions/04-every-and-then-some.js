@@ -15,6 +15,34 @@
     except that they take the array as their first argument rather than being a method.
 */
 // Your code here.
+function every(arr, predicate) {
+    var element = arr.shift();
+    
+    if (!predicate(element)) {
+        return false;
+    }
+    
+    if (arr.length === 0) {
+        return true;
+    }
+    
+    return every(arr, predicate);
+}
+
+function some(arr, predicate) {
+    var element = arr.shift();
+    
+    if (predicate(element)) {
+        return true;
+    }
+    
+    if (arr.length === 0) {
+        return false;
+    }
+    
+    return some(arr, predicate);
+}
+
 
 console.log(every([NaN, NaN, NaN], isNaN));
 // → true
